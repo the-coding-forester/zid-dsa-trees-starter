@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 class _Node {
   constructor(value) {
     this.value = value;
@@ -25,13 +26,13 @@ class Queue {
   }
 
   dequeue() {
-    //if the queue is empty, there is nothing to return
+    // if the queue is empty, there is nothing to return
     if (this.first === null) {
       return;
     }
     const node = this.first;
     this.first = this.first.next;
-    //if this is the last item in the queue
+    // if this is the last item in the queue
     if (node === this.last) {
       this.last = null;
     }
