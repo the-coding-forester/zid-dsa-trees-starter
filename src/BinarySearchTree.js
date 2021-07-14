@@ -23,4 +23,15 @@ class BinarySearchTree {
       this.right.insert(key, value);
     }
   }
+
+  find(key) {
+    if (this.key == key) {
+      return this.value;
+    } if (key < this.key && this.left) {
+      return this.left.find(key);
+    } if (key > this.key && this.right) {
+      return this.right.find(key);
+    }
+    throw new Error('Key Not Found');
+  }
 }
