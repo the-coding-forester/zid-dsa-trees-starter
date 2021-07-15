@@ -89,7 +89,7 @@ class BinarySearchTree {
     if (this.right) {
       values = this.right.dfsPostOrder(values);
     }
-    values.push(this.values);
+    values.push(this.value);
     return values;
   }
 
