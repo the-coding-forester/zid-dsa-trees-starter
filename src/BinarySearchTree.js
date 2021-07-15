@@ -1,3 +1,5 @@
+const Queue = require('./Queue');
+
 class BinarySearchTree {
   constructor(key = null, value = null, parent = null) {
     this.key = key;
@@ -56,6 +58,59 @@ class BinarySearchTree {
     } else {
       throw new Error('Key Not Found');
     }
+  }
+
+  dfsInOrder(values = []) {
+    if (this.left) {
+      values = this.left.dfsInOrder(values);
+    }
+    values.push(this.value);
+    if (this.right) {
+      values = this.right.dfsInOrder(values);
+    }
+    return values;
+  }
+
+  dfsPreOrder(values = []) {
+    values.push(this.value);
+    if (this.left) {
+      values = this.left.dfsPreOrder(values);
+    }
+    if (this.right) {
+      values = this.right.dfsPreOrder(values);
+    }
+    return values;
+  }
+
+  dfsPostOrder(values = []) {
+    if (this.left) {
+      values = this.left.dfsPostOrder(values);
+    }
+    if (this.right) {
+      values = this.right.dfsPostOrder(values);
+    }
+    values.push(this.values);
+    return values;
+  }
+
+  bfs(tree, values = []) {
+    const queue = new Queue();
+    queue.enqueue(tree);
+    let node = queue.dequeue();
+    while (node) {
+      values.push(node.value);
+
+      if (node.left) {
+        queue.enqueue(node.left);
+      }
+
+      if (node.right) {
+        queue.enqueue(node.right);
+      }
+      node = queue.dequeue();
+    }
+
+    return values;
   }
 
   _replaceWith(node) {
