@@ -194,4 +194,16 @@ class BinarySearchTree {
     to allocate space for the recursion stack.
     */
   }
+
+  findKthLargestValue(k) {
+    // Use the `dfsInOrder()` method to traverse the tree.
+    const values = this.dfsInOrder();
+    const kthIndex = values.length - k;
+
+    // Ensure that the index is within the bounds of the array.
+    if (kthIndex >= 0) {
+      return values[kthIndex];
+    }
+    console.error('k value exceeds the size of the BST.');
+  }
 }
