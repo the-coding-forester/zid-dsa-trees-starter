@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-underscore-dangle */
 const Queue = require('./Queue');
 
 class BinarySearchTree {
