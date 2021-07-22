@@ -145,4 +145,31 @@ class BinarySearchTree {
     }
     return this.left._findMin();
   }
+
+  getHeight(currentHeight = 0) {
+    // base case: current node has no children
+    if (!this.left && this.right) return currentHeight;
+
+    // recursive case:
+
+    // compute new height
+    const newHeight = currentHeight + 1;
+
+    // if no left child, recurse down the right subtree
+    if (!this.left) {
+      return this.right.getHeight(newHeight);
+    }
+
+    // if no right child, recurse down the left subtree
+    if (!this.right) {
+      return this.left.getHeight(newHeight);
+    }
+
+    // if node has both children, recurse down both
+    const leftHeight = this.left.getHeight(newHeight);
+    const rightHeight = this.right.getHeight(newHeight);
+
+    // return greater of the left or right subtree values
+    return Math.max(leftHeight, rightHeight);
+  }
 }
