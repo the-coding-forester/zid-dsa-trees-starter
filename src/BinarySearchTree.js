@@ -172,4 +172,26 @@ class BinarySearchTree {
     // return greater of the left or right subtree values
     return Math.max(leftHeight, rightHeight);
   }
+
+  isBST() {
+    // Use the `dfsInOrder()` method to traverse the tree.
+    const values = this.dfsInOrder();
+
+    // Check if the array returned by `dfsInOrder()` is a sorted array.
+    for (let i = 1; i < values.length; i++) {
+      // Compare the current and previous values.
+      if (values[i] < values[i - 1]) {
+        return false;
+      }
+    }
+    return true;
+
+    /*
+    To optimize space complexity you can:
+    Instead of creating the auxiliary array, you can simply keep track of the previously visited
+    node and compare it to the currently visited node while doing the in-order traversal. The space
+    complexity becomes O(h), where h is the height of the tree, because the algorithm still needs
+    to allocate space for the recursion stack.
+    */
+  }
 }
